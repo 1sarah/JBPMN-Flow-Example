@@ -16,6 +16,8 @@ public class Transaction extends StandardEntity {
     @Column(name = "STATUS")
     private String status;
 
+
+
     @Column(name = "DESCRIPTION")
     private String description;
 
