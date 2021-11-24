@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://transactionBrowse.caption"
+        focusComponent="transactionsTable"
+        messagesPack="com.company.bpmntester.web.screens.transaction">
+    <data readOnly="true">
+        <collection id="transactionsDc"
+                    class="com.company.bpmntester.entity.Transaction">
+            <view extends="_local"/>
+            <loader id="transactionsDl">
+                <query>
+                    <![CDATA[select e from bpmntester_Transaction e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="transactionsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="transactionsTable"
+                dataLoader="transactionsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="transactionsTable"
+                    width="100%"
+                    dataContainer="transactionsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="add" type="add"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="status"/>
+                <column id="description"/>
+                <column id="checkNo"/>
+                <column id="reccomendations"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="transactionsTable.create"/>
+                <button id="editBtn" action="transactionsTable.edit"/>
+                <button id="removeBtn" action="transactionsTable.remove"/>
+                <button id="addBtn" action="transactionsTable.add"/>
+                <button id="excelBtn" action="transactionsTable.excel"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

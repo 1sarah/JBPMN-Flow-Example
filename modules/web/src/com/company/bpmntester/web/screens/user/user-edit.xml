@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://userEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.bpmntester.web.screens.user">
+    <data>
+        <instance id="userDc"
+                  class="com.company.bpmntester.entity.User">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="userDc">
+            <column width="350px">
+                <textField id="nameField" property="name"/>
+                <textField id="passwordField" property="password"/>
+                <textField id="usernameField" property="username"/>
+                <textField id="roleField" property="role"/>
+                <textField id="emailField" property="email"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
